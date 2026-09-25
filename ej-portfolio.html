@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>EJ — Full-Stack Developer</title>
+    <style>
+      :root {
+        --bg: #070b14;
+        --panel: #0d1422;
+        --text: #f5f8ff;
+        --muted: #8e9bb0;
+        --blue: #3b82f6;
+        --line: #1b2940;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 70% 10%, #0d2a54 0, transparent 28%),
+          var(--bg);
+        color: var(--text);
+        font:
+          16px/1.6 Inter,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        max-width: 1080px;
+        margin: auto;
+        padding: 0 24px;
+      }
+      nav {
+        height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .logo {
+        font-weight: 800;
+        font-size: 21px;
+      }
+      .logo span,
+      .blue {
+        color: var(--blue);
+      }
+      nav .links {
+        display: flex;
+        gap: 26px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .hero {
+        min-height: 680px;
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 40px;
+      }
+      .eyebrow {
+        color: #79aaff;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .hero h1 {
+        font-size: clamp(48px, 7vw, 78px);
+        line-height: 1.02;
+        margin: 14px 0 20px;
+        letter-spacing: -0.055em;
+      }
+      .hero p {
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 18px;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 32px;
+      }
+      .btn {
+        padding: 12px 20px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        font-weight: 650;
+      }
+      .primary {
+        background: var(--blue);
+        border-color: var(--blue);
+        box-shadow: 0 8px 30px rgba(59, 130, 246, 0.25);
+      }
+      .code-card {
+        background: rgba(13, 20, 34, 0.72);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 22px;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+        transform: rotate(2deg);
+      }
+      .dots {
+        color: #53657d;
+        letter-spacing: 5px;
+      }
+      .code {
+        font:
+          14px/1.8 ui-monospace,
+          SFMono-Regular,
+          monospace;
+        color: #9fb0c8;
+      }
+      .code b {
+        color: #6ea8ff;
+      }
+      .code i {
+        color: #72d6b2;
+      }
+      section {
+        padding: 90px 0;
+      }
+      .section-title {
+        font-size: 34px;
+        letter-spacing: -0.035em;
+        margin: 0 0 10px;
+      }
+      .section-sub {
+        color: var(--muted);
+        margin: 0 0 34px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .card {
+        background: linear-gradient(
+          145deg,
+          rgba(17, 26, 43, 0.9),
+          rgba(9, 15, 26, 0.9)
+        );
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 25px;
+        transition: 0.25s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        border-color: #315b95;
+      }
+      .tag {
+        display: inline-block;
+        background: #0e2444;
+        color: #78adff;
+        border: 1px solid #193c6d;
+        padding: 4px 9px;
+        border-radius: 999px;
+        font-size: 12px;
+        margin: 4px 3px 0 0;
+      }
+      .card h3 {
+        margin: 15px 0 8px;
+      }
+      .card p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .skill {
+        border: 1px solid var(--line);
+        background: #0b1220;
+        padding: 10px 14px;
+        border-radius: 10px;
+        color: #bdc8d8;
+      }
+      .contact {
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 44px;
+        background: linear-gradient(120deg, #0d1729, #0b1220);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .contact h2 {
+        margin: 0;
+        font-size: 32px;
+      }
+      .contact p {
+        color: var(--muted);
+        margin: 6px 0 0;
+      }
+      footer {
+        padding: 35px 0;
+        color: #68778d;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: 14px;
+      }
+      @media (max-width: 760px) {
+        nav .links {
+          display: none;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          min-height: auto;
+          padding: 100px 0;
+        }
+        .code-card {
+          display: none;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .contact {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        section {
+          padding: 65px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <nav>
+        <a class="logo" href="#">EJ<span>.</span></a>
+        <div class="links">
+          <a href="#about">About</a><a href="#projects">Projects</a
+          ><a href="#skills">Skills</a><a href="#contact">Contact</a>
+        </div>
+      </nav>
+      <header class="hero">
+        <div>
+          <div class="eyebrow">Full-Stack Web Developer</div>
+          <h1>
+            I build clean,<br /><span class="blue">useful</span> digital
+            products.
+          </h1>
+          <p>
+            I'm EJ, a developer focused on creating modern web applications with
+            Laravel, PHP, MySQL and JavaScript — from practical business systems
+            to polished user experiences.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#projects">View my work →</a
+            ><a class="btn" href="#contact">Contact me</a>
+          </div>
+        </div>
+        <div class="code-card">
+          <div class="dots">● ● ●</div>
+          <div class="code">
+            <br /><b>const</b> developer = {<br />&nbsp;&nbsp;name:
+            <i>"EJ Jangco"</i>,<br />&nbsp;&nbsp;focus:
+            <i>"Full-Stack"</i>,<br />&nbsp;&nbsp;stack: [<i>"Laravel"</i>,
+            <i>"MySQL"</i>],<br />&nbsp;&nbsp;available: <b>true</b><br />};
+          </div>
+        </div>
+      </header>
+      <section id="about">
+        <div class="eyebrow">About</div>
+        <h2 class="section-title">
+          Building solutions that make work simpler.
+        </h2>
+        <p class="section-sub">
+          I enjoy turning real-world problems into straightforward, maintainable
+          web applications with thoughtful interfaces and reliable backends.
+        </p>
+      </section>
+      <section id="projects">
+        <div class="eyebrow">Selected work</div>
+        <h2 class="section-title">Projects</h2>
+        <p class="section-sub">
+          A few systems I've worked on and am currently building.
+        </p>
+        <div class="grid">
+          <article class="card">
+            <span class="tag">Laravel</span><span class="tag">MySQL</span>
+            <h3>Inventory System</h3>
+            <p>
+              Product, category, supplier and stock management designed as the
+              foundation for a complete POS platform.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">React</span><span class="tag">Node.js</span>
+            <h3>Student Services</h3>
+            <p>
+              A centralized appointment platform connecting student requests
+              with school service offices and dashboards.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Flutter</span><span class="tag">Firebase</span>
+            <h3>Trippy</h3>
+            <p>
+              A real-time transport tracking concept featuring live driver
+              locations, routes and passenger ETA information.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section id="skills">
+        <div class="eyebrow">Toolkit</div>
+        <h2 class="section-title">Skills & technologies</h2>
+        <p class="section-sub">
+          Technologies I use to take ideas from database to interface.
+        </p>
+        <div class="skills">
+          <span class="skill">Laravel</span><span class="skill">PHP</span
+          ><span class="skill">MySQL</span><span class="skill">JavaScript</span
+          ><span class="skill">HTML & CSS</span><span class="skill">React</span
+          ><span class="skill">Node.js</span><span class="skill">Git</span
+          ><span class="skill">REST APIs</span>
+        </div>
+      </section>
+      <section id="contact">
+        <div class="contact">
+          <div>
+            <div class="eyebrow">Let's work together</div>
+            <h2>Have a project in mind?</h2>
+            <p>
+              I'm open to freelance projects and web development opportunities.
+            </p>
+          </div>
+          <a class="btn primary" href="mailto:ellyjayj.com">Say hello →</a>
+        </div>
+      </section>
+      <footer>© 2026 EJ Jangco. Designed & built with care.</footer>
+    </div>
+  </body>
+</html>
